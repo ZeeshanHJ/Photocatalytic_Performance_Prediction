@@ -1,0 +1,82 @@
+{
+    "config": {
+        "drop_remainder": false,
+        "category": "ML",
+        "mode": "regression",
+        "batch_size": 32,
+        "split_random": true,
+        "val_fraction": 0.2,
+        "indices": null,
+        "train_fraction": 0.7,
+        "save": false,
+        "allow_nan_labels": 0,
+        "nan_filler": null,
+        "seed": 313,
+        "input_features": [
+            "Catalyst_type",
+            "Catalyst_loading",
+            "Light_intensity",
+            "time",
+            "solution_pH",
+            "HA",
+            "Anions",
+            "Ci",
+            "Surface area",
+            "Pore Volume"
+        ],
+        "output_features": [
+            "k"
+        ],
+        "intervals": null,
+        "verbosity": 0,
+        "teacher_forcing": false,
+        "dataset_args": {},
+        "ts_args": {
+            "lookback": 1,
+            "forecast_len": 1,
+            "forecast_step": 0,
+            "known_future_inputs": false,
+            "input_steps": 1,
+            "output_steps": 1
+        },
+        "model": {
+            "CatBoostRegressor": {
+                "iterations": 5000,
+                "learning_rate": 0.49999999999999994,
+                "l2_leaf_reg": 5.0,
+                "model_size_reg": 0.1,
+                "rsm": 0.743606499290401,
+                "border_count": 1032,
+                "feature_border_type": "UniformAndQuantiles",
+                "logging_level": "Silent",
+                "random_seed": 313
+            }
+        },
+        "x_transformation": null,
+        "y_transformation": null,
+        "composite": false,
+        "lr": 0.001,
+        "optimizer": "Adam",
+        "loss": "mse",
+        "quantiles": null,
+        "epochs": 14,
+        "min_val_loss": 0.0001,
+        "patience": 100,
+        "shuffle": true,
+        "save_model": true,
+        "backend": null,
+        "buffer_size": 100,
+        "batches_per_epoch": null,
+        "steps_per_epoch": null,
+        "monitor": null,
+        "batches": "2d",
+        "prefix": "Efficiency_ohe_0_optimize_20220512_114057\\CatBoostRegressor\\best",
+        "kmodel": null,
+        "cross_validator": null,
+        "wandb_config": null,
+        "val_metric": "r2",
+        "model_name_": "CatBoostRegressor",
+        "is_custom_model_": false
+    },
+    "method": null
+}
