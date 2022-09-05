@@ -1,0 +1,113 @@
+{
+    "config": {
+        "drop_remainder": false,
+        "category": "DL",
+        "mode": "regression",
+        "batch_size": 8,
+        "split_random": true,
+        "val_fraction": 0.2,
+        "indices": null,
+        "train_fraction": 1.0,
+        "save": false,
+        "allow_nan_labels": 0,
+        "nan_filler": null,
+        "seed": 313,
+        "input_features": [
+            "Catalyst_type",
+            "Catalyst_loading",
+            "Light_intensity",
+            "time",
+            "solution_pH",
+            "HA",
+            "Anions",
+            "Ci",
+            "Surface area",
+            "Pore Volume"
+        ],
+        "output_features": [
+            "Efficiency"
+        ],
+        "intervals": null,
+        "verbosity": 0,
+        "teacher_forcing": false,
+        "dataset_args": {},
+        "ts_args": {
+            "lookback": 0,
+            "forecast_len": 1,
+            "forecast_step": 0,
+            "known_future_inputs": false,
+            "input_steps": 1,
+            "output_steps": 1
+        },
+        "model": {
+            "layers": {
+                "Input": {
+                    "shape": [
+                        29
+                    ],
+                    "name": "Input"
+                },
+                "Dense_0": {
+                    "units": 50,
+                    "activation": "relu",
+                    "name": "Dense_0"
+                },
+                "Dense_1": {
+                    "units": 50,
+                    "activation": "relu",
+                    "name": "Dense_1"
+                },
+                "Dense_2": {
+                    "units": 50,
+                    "activation": "relu",
+                    "name": "Dense_2"
+                },
+                "Dense_3": {
+                    "units": 50,
+                    "activation": "relu",
+                    "name": "Dense_3"
+                },
+                "Dense_4": {
+                    "units": 50,
+                    "activation": "relu",
+                    "name": "Dense_4"
+                },
+                "Flatten": {
+                    "name": "Flatten"
+                },
+                "Dense_out": {
+                    "units": 1,
+                    "activation": null,
+                    "name": "Dense_out"
+                }
+            }
+        },
+        "x_transformation": null,
+        "y_transformation": null,
+        "composite": false,
+        "lr": 0.0008616232612634365,
+        "optimizer": "Adam",
+        "loss": "mse",
+        "quantiles": null,
+        "epochs": 1000,
+        "min_val_loss": 0.0001,
+        "patience": 800,
+        "shuffle": true,
+        "save_model": true,
+        "backend": "tensorflow",
+        "buffer_size": 100,
+        "batches_per_epoch": null,
+        "steps_per_epoch": null,
+        "monitor": null,
+        "batches": "3d",
+        "prefix": "Efficiency_ohe_0_hpo_20220518_135105",
+        "kmodel": null,
+        "cross_validator": null,
+        "wandb_config": null,
+        "val_metric": "r2_score",
+        "model_name_": null,
+        "is_custom_model_": false
+    },
+    "method": null,
+    "loss": "keras.losses"
+}
