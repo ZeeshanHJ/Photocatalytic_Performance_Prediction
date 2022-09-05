@@ -1,0 +1,63 @@
+{
+    "config": {
+        "drop_remainder": false,
+        "category": "DL",
+        "mode": "regression",
+        "batch_size": 4,
+        "split_random": false,
+        "val_fraction": 0.2,
+        "indices": null,
+        "train_fraction": 0.7,
+        "save": false,
+        "allow_nan_labels": 0,
+        "nan_filler": null,
+        "seed": 313,
+        "input_features": null,
+        "output_features": null,
+        "intervals": null,
+        "verbosity": 0,
+        "teacher_forcing": false,
+        "dataset_args": {},
+        "ts_args": {
+            "lookback": 1,
+            "forecast_len": 1,
+            "forecast_step": 0,
+            "known_future_inputs": false,
+            "input_steps": 1,
+            "output_steps": 1
+        },
+        "model": {
+            "layers": {
+                "units": 80,
+                "activation": "elu"
+            }
+        },
+        "x_transformation": null,
+        "y_transformation": null,
+        "composite": false,
+        "lr": 0.0010370537087375496,
+        "optimizer": "Adam",
+        "loss": "mse",
+        "quantiles": null,
+        "epochs": 1000,
+        "min_val_loss": 0.0001,
+        "patience": 800,
+        "shuffle": true,
+        "save_model": true,
+        "backend": "tensorflow",
+        "buffer_size": 100,
+        "batches_per_epoch": null,
+        "steps_per_epoch": null,
+        "monitor": null,
+        "batches": "3d",
+        "prefix": "Efficiency_ohe_10_hpo_20220519_152136",
+        "kmodel": null,
+        "cross_validator": null,
+        "wandb_config": null,
+        "val_metric": "r2_score",
+        "model_name_": null,
+        "is_custom_model_": false
+    },
+    "method": null,
+    "loss": "mean_squared_error"
+}

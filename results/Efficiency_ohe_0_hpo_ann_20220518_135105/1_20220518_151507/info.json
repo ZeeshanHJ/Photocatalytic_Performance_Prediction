@@ -1,0 +1,22 @@
+{
+    "model_parameters": 11751,
+    "training_end": "20220518_151840",
+    "training_start": "20220518_151509",
+    "training_time_in_minutes": 3.51,
+    "version_info": {
+        "ai4water_version": "1.04",
+        "eager_execution": true,
+        "h5py": "3.6.0",
+        "is_built_with_gpu_support": true,
+        "joblib": "1.1.0",
+        "keras": "2.7.0",
+        "matplotlib": "3.5.2",
+        "np": "1.22.3",
+        "os": "nt",
+        "pd": "1.4.2",
+        "python": "3.8.13 (default, Mar 28 2022, 06:59:08) [MSC v.1916 64 bit (AMD64)]",
+        "tf": "2.7.0",
+        "tf_is_built_with_cuda": true,
+        "tf_is_gpu_available": false
+    }
+}
