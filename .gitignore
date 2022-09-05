@@ -1,0 +1,11 @@
+
+# private stuff
+results/
+
+.ipynb_checkpoints/
+__pycache__/
+.idea/
+.vscode/
+.eggs/
+AI4Water.egg-info/
+catboost_info/

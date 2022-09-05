@@ -4,20 +4,14 @@ site.addsitedir("D:\\AI4Water")
 
 import os
 import math
-from typing import Union
 
-import numpy as np
-
-from skopt.plots import plot_objective
 from SeqMetrics import RegressionMetrics
 
-
-from ai4water.datasets import busan_beach
 from ai4water.utils.utils import jsonize, dateandtime_now
 from ai4water.hyperopt import HyperOpt, Categorical, Real, Integer
 from sklearn.model_selection import train_test_split
 
-from utils import prepare_mg_dye_data, MyModel
+from utils import PrepareData, MyModel
 
 # data preparation
 
@@ -26,7 +20,14 @@ inputs = ['Catalyst_type', 'Catalyst_loading',
           'Surface area', 'Pore Volume'
           ]
 
-x,y = prepare_mg_dye_data(inputs, target="k")
+target = "Efficiency" #Efficiency #k
+transformation = "ohe"# le #ohe
+lookback = 10
+run_tye="dry_run"  # optimize # dry_run
+
+prepare_data = PrepareData()
+x,y = prepare_data(inputs, target=target, transformation=transformation,
+                          lookback=lookback)
 
 train_x, val_x, train_y, val_y = train_test_split(x, y, test_size=0.3, random_state=313)
 
@@ -53,7 +54,7 @@ def objective_fn(
                   train_fraction=1.0,
                   split_random=True,
                   verbosity=0,
-                    #y_transformation={"robust"},
+                  y_transformation="minmax",
                   )
 
     # train model

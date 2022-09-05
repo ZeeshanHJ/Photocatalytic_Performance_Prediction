@@ -191,7 +191,8 @@ def prediction_dist_heatmap(summary_df, annot_fontsize=8,
     else:
         font_color = plt.get_cmap("Blues")(1.)
 
-    ann_kws = {"color": "w", "ha": "center", "va": "center",
+    ann_kws = {#"color": "w",
+               "ha": "center", "va": "center",
                'fmt': '%.1f',
                'fontdict': {'size': annot_fontsize,
                             'color': font_color}

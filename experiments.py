@@ -1,14 +1,13 @@
 
 import site
-site.addsitedir("D:\\AI4Water")
+site.addsitedir("D:\\mytools\\AI4Water")
 
-from ai4water import Model
 from ai4water.utils.utils import jsonize
 from ai4water.experiments import MLRegressionExperiments
 from sklearn.model_selection import train_test_split
 from ai4water.utils.utils import dateandtime_now
 
-from utils import prepare_mg_dye_data, MyModel
+from utils import PrepareData, MyModel
 
 # data preparation
 
@@ -18,14 +17,15 @@ inputs = ['Catalyst_type', 'Catalyst_loading',
           ]
 
 target = "Efficiency" #Efficiency #k
-transformation = "le"# le #ohe
+transformation = "ohe"# le #ohe
 lookback = 0
 run_tye="dry_run"  # optimize # dry_run
 num_iterations=100
 
 exp_name = f"{target}_{transformation}_{lookback}_{run_tye}_{dateandtime_now()}"
 
-x,y = prepare_mg_dye_data(inputs, target=target, transformation=transformation,
+prepare_data = PrepareData()
+x,y = prepare_data(inputs, target=target, transformation=transformation,
                           lookback=lookback)
 
 train_x, val_x, train_y, val_y = train_test_split(x, y, test_size=0.3, random_state=313)
@@ -55,12 +55,13 @@ class MyExperiments(MLRegressionExperiments):
 
 # Define Experiment
 comparisons = MyExperiments(
-      input_features=inputs,
-    output_features=['k'],
+      input_features=prepare_data.inputs,
+    output_features=[target],
 
       split_random=True,
     val_metric="r2",
-    exp_name = exp_name
+    exp_name = exp_name,
+    x_transformation="minmax",
 
 )
 

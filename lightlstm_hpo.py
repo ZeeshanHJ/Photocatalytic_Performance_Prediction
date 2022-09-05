@@ -1,6 +1,6 @@
 
 import site
-site.addsitedir("D:\\AI4Water")
+site.addsitedir("D:\\mytools\\AI4Water")
 
 import os
 import math
@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 from SeqMetrics import RegressionMetrics
 from easy_mpl import regplot
 from tensorflow.keras.layers import Input, Dense, Flatten
-
 
 from ai4water.functional import Model
 from ai4water.utils.utils import jsonize, dateandtime_now
@@ -106,6 +105,7 @@ def objective_fn(
         patience=800,
         epochs=1000,
         verbosity=0,
+        x_transformation="minmax",
         prefix=prefix or PREFIX,
     )
 

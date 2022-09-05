@@ -1,9 +1,7 @@
 
 import os
 import site
-site.addsitedir("D:\\AI4Water")
-
-
+site.addsitedir("D:\\mytools\\AI4Water")
 
 import numpy as np
 import pandas as pd
@@ -16,6 +14,8 @@ from ai4water.utils.utils import dateandtime_now
 
 from utils import PrepareData
 
+import site
+site.addsitedir("D:\\mytools\\AI4Water")
 
 # data preparation
 
@@ -39,7 +39,7 @@ x,y = prepare_data(inputs, target=target, transformation=transformation,
 
 train_x, val_x, train_y, val_y = train_test_split(x, y, test_size=0.3, random_state=313)
 
-model_config = LSTM(
+model_config = MLP(
     units=32,
     num_layers=2,
     activation=None,  # "tanh", "sigmoid", "relu", "leaky_relu", "elu"
@@ -54,6 +54,7 @@ model_config = LSTM(
 #     input_features=inputs,
 #     lr=0.001,
 #     batch_size=32,
+#     x_transformatino="minmax",
 #     epochs=500
 # )
 #

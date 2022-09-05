@@ -1,8 +1,5 @@
 import os
 
-import site
-site.addsitedir("D:\\AI4Water")
-
 import json
 
 import numpy as np
@@ -47,7 +44,7 @@ anion_encoder = prepare_data.anion_encoder
 
 train_x, val_x, train_y, val_y = train_test_split(x, y, test_size=0.3, random_state=313)
 
-c_path = r"D:\Zeeshan\modeling\results\Efficiency_ohe_0_optimize_20220512_114057\CatBoostRegressor\best\20220512_115620"
+c_path = r"D:\collaborations\zeeshan\efficiency_prediction\NM_BiFeO3_Modelling_paper\results\Efficiency_ohe_0_dry_run_20220828_140458\CatBoostRegressor\20220828_140509"
 model = MyModel.from_config_file(os.path.join(c_path, "config.json"))
 
 model.verbosity = 1
@@ -125,101 +122,101 @@ total_x_df = total_x_df.rename(columns=mapper)
 mapper = {k:v for k,v in zip(anion_cols, anion_encoder.categories_[0])}
 total_x_df = total_x_df.rename(columns=mapper)
 
-# fig, axes, summary_df = actual_plot(
-# model=model, X=total_x_df, feature='Catalyst_loading', feature_name='Catalyst_loading',
-# cust_grid_points=[0, 1.,  1.6, 2.5]
-# )
-# plt.savefig(os.path.join(model.path, "catalyst_loading.png"), dpi=500)
-# plt.show()
-#
-# # for categroical features
-# fig, axes, summary_df = actual_plot(
-# model=model, X=total_x_df,
-# feature=[f'catalyst_{i}' for i in range(15)],
-# feature_name='Catalyst_type',
-# )
-# plt.savefig(os.path.join(model.path, "catalyst_type.png"), dpi=500)
-# plt.show()
-#
-# fig, axes, summary_df = actual_plot(
-# model=model, X=total_x_df,
-# feature=[f'Anions_{i}' for i in range(6)],
-# feature_name='Anions',
-# )
-# plt.savefig(os.path.join(model.path, "Anions.png"), dpi=500)
-# plt.show()
-#
-# fig, axes, summary_df = actual_plot(
-# model=model, X=total_x_df, feature='Light_intensity', feature_name='Light_intensity',
-# cust_grid_points=[0, 1, 26, 56, 105]
-# )
-# plt.savefig(os.path.join(model.path, "Light_intensity.png"), dpi=500)
-# plt.show()
-#
-# fig, axes, summary_df = actual_plot(
-# model=model, X=total_x_df, feature='Ci', feature_name='Ci',
-# cust_grid_points=[5, 10, 20, 40, 80]
-# )
-# plt.savefig(os.path.join(model.path, "Ci.png"), dpi=500)
-# plt.show()
-#
-# fig, axes, summary_df = actual_plot(
-# model=model, X=total_x_df, feature='solution_pH', feature_name='solution_pH',
-# cust_grid_points=[3, 4.9, 5.1, 5.5, 7.1, 9]
-# )
-# plt.savefig(os.path.join(model.path, "solution_pH.png"), dpi=500)
-# plt.show()
-#
-# fig, axes, summary_df = actual_plot(
-# model=model, X=total_x_df, feature='time', feature_name='time',
-# cust_grid_points=[0, 29, 59, 89, 119, 149, 179, 209, 239, 269, 271]
-# )
-# plt.savefig(os.path.join(model.path, "time.png"), dpi=500)
-# plt.show()
-#
-# fig, axes, summary_df = actual_plot(
-# model=model, X=total_x_df, feature='Surface area', feature_name='Surface area',
-# cust_grid_points=[0, 10, 20, 30, 50]
-# )
-# plt.savefig(os.path.join(model.path, "Surface area.png"), dpi=500)
-# plt.show()
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df, feature='Catalyst_loading', feature_name='Catalyst_loading',
+cust_grid_points=[0, 1.,  1.6, 2.5]
+)
+plt.savefig(os.path.join(model.path, "catalyst_loading.png"), dpi=500)
+plt.show()
+
+# for categroical features
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df,
+feature=[f'catalyst_{i}' for i in range(15)],
+feature_name='Catalyst_type',
+)
+plt.savefig(os.path.join(model.path, "catalyst_type.png"), dpi=500)
+plt.show()
+
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df,
+feature=[f'Anions_{i}' for i in range(6)],
+feature_name='Anions',
+)
+plt.savefig(os.path.join(model.path, "Anions.png"), dpi=500)
+plt.show()
+
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df, feature='Light_intensity', feature_name='Light_intensity',
+cust_grid_points=[0, 1, 26, 56, 105]
+)
+plt.savefig(os.path.join(model.path, "Light_intensity.png"), dpi=500)
+plt.show()
+
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df, feature='Ci', feature_name='Ci',
+cust_grid_points=[5, 10, 20, 40, 80]
+)
+plt.savefig(os.path.join(model.path, "Ci.png"), dpi=500)
+plt.show()
+
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df, feature='solution_pH', feature_name='solution_pH',
+cust_grid_points=[3, 4.9, 5.1, 5.5, 7.1, 9]
+)
+plt.savefig(os.path.join(model.path, "solution_pH.png"), dpi=500)
+plt.show()
+
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df, feature='time', feature_name='time',
+cust_grid_points=[0, 29, 59, 89, 119, 149, 179, 209, 239, 269, 271]
+)
+plt.savefig(os.path.join(model.path, "time.png"), dpi=500)
+plt.show()
+
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df, feature='Surface area', feature_name='Surface area',
+cust_grid_points=[0, 10, 20, 30, 50]
+)
+plt.savefig(os.path.join(model.path, "Surface area.png"), dpi=500)
+plt.show()
 
 
 
-#fig, axes, summary_df = actual_plot(
-#model=model, X=total_x_df, feature='Pore Volume', feature_name='Pore Volume',
-#cust_grid_points=[0, 0.0015, 0.0025, 0.0035, 0.0045, 0.0051]
-#)
-#plt.savefig(os.path.join(model.path, "Pore Volume.png"), dpi=500)
-#plt.show()
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df, feature='Pore Volume', feature_name='Pore Volume',
+cust_grid_points=[0, 0.0015, 0.0025, 0.0035, 0.0045, 0.0051]
+)
+plt.savefig(os.path.join(model.path, "Pore Volume.png"), dpi=500)
+plt.show()
 
-#fig, axes, summary_df = actual_plot(
-#model=model, X=total_x_df, feature='HA', feature_name='HA',
-#cust_grid_points=[0, 2, 5, 7, 10]
-#)
-#plt.savefig(os.path.join(model.path, "HA.png"), dpi=500)
-#plt.show()
+fig, axes, summary_df = actual_plot(
+model=model, X=total_x_df, feature='HA', feature_name='HA',
+cust_grid_points=[0, 2, 5, 7, 10]
+)
+plt.savefig(os.path.join(model.path, "HA.png"), dpi=500)
+plt.show()
 
 #
-#fig, axes, summary_df = actual_plot_interact(
-#model=model, X=total_x_df,
-#features=['Catalyst_loading', 'Light_intensity'],
-#feature_names=['Catalyst_loading', 'Light_intensity'],
-#cust_grid_points=[[0, 1., 1.6, 2.5],
-#[0, 1, 26, 56, 105]]
-#)
-#plt.savefig(os.path.join(model.path, "catalyst_loading_light.png"), dpi=500)
-#plt.show()
+fig, axes, summary_df = actual_plot_interact(
+model=model, X=total_x_df,
+features=['Catalyst_loading', 'Light_intensity'],
+feature_names=['Catalyst_loading', 'Light_intensity'],
+cust_grid_points=[[0, 1., 1.6, 2.5],
+[0, 1, 26, 56, 105]]
+)
+plt.savefig(os.path.join(model.path, "catalyst_loading_light.png"), dpi=500)
+plt.show()
 
-#prediction_dist_heatmap(summary_df,
-#                       font_cmap=None,
-#                      annot_fontsize=6,
-#                     cmap="tab20",
-#                    xlabel=None,
-#                   ylabel=None,
-#                  )
-#plt.savefig(os.path.join(model.path, "catalyst_loading_light_heatmap.png"), dpi=500)
-#plt.show()
+prediction_dist_heatmap(summary_df,
+                      font_cmap=None,
+                     annot_fontsize=6,
+                    cmap="tab20",
+                   xlabel=None,
+                  ylabel=None,
+                 )
+plt.savefig(os.path.join(model.path, "catalyst_loading_light_heatmap.png"), dpi=500)
+plt.show()
 
 #***************** INTERACTION******************
 # # for categroical features
@@ -516,29 +513,29 @@ plt.show()
 
 
 # for categroical features
-fig, axes, summary_df = actual_plot_interact(
-model=model, X=total_x_df,
-features=['time', 'Surface area'],
-feature_names=['time', 'Surface area'],
-annotate=True,
-annotate_counts=False,
-cust_grid_points=[[0, 29, 59, 89, 119, 149, 179, 209, 239, 269, 271],
-                  None]
-)
-plt.savefig(os.path.join(model.path, "time_Surface_area.png"), dpi=500)
-plt.show()
-
-yticklabels = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270]
-df, _ = prediction_dist_heatmap(summary_df,
-                       font_cmap=None,
-                       annot_fontsize=6,
-                       cmap="tab20",
-                       xlabel=None,
-                       ylabel=None,
-                                yticklabels=yticklabels
-                       )
-plt.savefig(os.path.join(model.path, "time_Surface_area1.png"), dpi=500)
-plt.show()
+# fig, axes, summary_df = actual_plot_interact(
+# model=model, X=total_x_df,
+# features=['time', 'Surface area'],
+# feature_names=['time', 'Surface area'],
+# annotate=True,
+# annotate_counts=False,
+# cust_grid_points=[[0, 29, 59, 89, 119, 149, 179, 209, 239, 269, 271],
+#                   None]
+# )
+# plt.savefig(os.path.join(model.path, "time_Surface_area.png"), dpi=500)
+# plt.show()
+#
+# yticklabels = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270]
+# df, _ = prediction_dist_heatmap(summary_df,
+#                        font_cmap=None,
+#                        annot_fontsize=6,
+#                        cmap="tab20",
+#                        xlabel=None,
+#                        ylabel=None,
+#                                 yticklabels=yticklabels
+#                        )
+# plt.savefig(os.path.join(model.path, "time_Surface_area1.png"), dpi=500)
+# plt.show()
 
 #
 # for categroical features
@@ -675,23 +672,23 @@ plt.show()
 
 
 
-# importances = model._model.feature_importances_
+importances = model._model.feature_importances_
+
+imp_df = pd.DataFrame(importances.reshape(1, -1), columns=new_inputs)
+imp_df.to_csv(os.path.join(model.path, "feature_importance.csv"))
+
+anion_labels = [f'Anions_{i}' for i in range(6)]
+anion_imp = imp_df[anion_labels].sum(axis=1)
+cat_labels = [f'catalyst_{i}' for i in range(15)]
+cat_imp = imp_df[cat_labels].sum(axis=1)
 #
-# imp_df = pd.DataFrame(importances.reshape(1, -1), columns=new_inputs)
-# imp_df.to_csv(os.path.join(model.path, "feature_importance.csv"))
+rem_labels = [label for label in new_inputs if label not in anion_labels + cat_labels]
+rem_imp = imp_df[rem_labels]
 #
-# anion_labels = [f'Anions_{i}' for i in range(6)]
-# anion_imp = imp_df[anion_labels].sum(axis=1)
-# cat_labels = [f'catalyst_{i}' for i in range(15)]
-# cat_imp = imp_df[cat_labels].sum(axis=1)
+labels = ["Anion", "Catalyt_type"] + rem_labels
+vals = [float(anion_imp)] + [float(cat_imp)] + rem_imp.values.reshape(-1,).tolist()
 #
-# rem_labels = [label for label in new_inputs if label not in anion_labels + cat_labels]
-# rem_imp = imp_df[rem_labels]
-#
-# labels = ["Anion", "Catalyt_type"] + rem_labels
-# vals = [float(anion_imp)] + [float(cat_imp)] + rem_imp.values.reshape(-1,).tolist()
-#
-# bar_chart(vals,
-#           labels=labels)
+bar_chart(vals,
+          labels=labels)
 #
 # bar_chart(np.array(vals)/np.sum(vals), labels)

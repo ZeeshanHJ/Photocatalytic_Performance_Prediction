@@ -1,7 +1,7 @@
 
 import os
 import site
-site.addsitedir("D:\\AI4Water")
+site.addsitedir("D:\\mytools\\AI4Water")
 
 import tensorflow as tf
 tf.compat.v1.disable_eager_execution()
@@ -77,38 +77,38 @@ class FModel(Model):
 
 
 
-# model_config = {"layers":
-#                     {"Input_0": {"batch_shape": (batch_size, lookback, num_dyn_inputs)},
-#                 "Input_1": {"batch_shape": (batch_size, lookback, num_static_inputs)}}
-#                 }
-# _model = FModel(
-#     model={"layers": {"units": units, "activation": "relu"}},
-#     lr=0.0010053617482820901,
-#     patience=800,
-#     epochs=1000,
-#     verbosity=0,
-#     #prefix=prefix or PREFIX,
-# )
-#
-# model.fit(
-#     x=[train_x_dyn[0:92], train_x_static[0:92]], y=train_y[0:92].reshape(92, -1),
-#     validation_data=([val_x_dyn[0:40], val_x_static[0:40]], val_y[0:40].reshape(40, -1)),
-#     batch_size=batch_size,
-#     epochs=500,
-#
-# )
-#
+model_config = {"layers":
+                    {"Input_0": {"batch_shape": (batch_size, lookback, num_dyn_inputs)},
+                "Input_1": {"batch_shape": (batch_size, lookback, num_static_inputs)}}
+                }
+model = FModel(
+    model={"layers": {"units": units, "activation": "relu"}},
+    lr=0.0010053617482820901,
+    patience=800,
+    epochs=1000,
+    #x_transformation="minmax",
+    verbosity=1,
+)
+
+model.fit(
+    x=[train_x_dyn[0:92], train_x_static[0:92]], y=train_y[0:92].reshape(92, -1),
+    validation_data=([val_x_dyn[0:40], val_x_static[0:40]], val_y[0:40].reshape(40, -1)),
+    batch_size=batch_size,
+    epochs=500,
+
+)
+
 
 # print(RegressionMetrics(val_y[0:40].reshape(-1,1), p.reshape(-1,)).r2())
 
 
 # ****************** from config *********************************
-cpath = r'D:\Zeeshan\modeling\results\Efficiency_ohe_10_hpo_20220519_152136\1_20220519_162029'
-_model = FModel.from_config_file(os.path.join(cpath, "config.json"))
-
-_model.verbosity = 1
-w_path = os.path.join(cpath, "weights", "weights_999_10.48209.hdf5")
-_model.update_weights(w_path)
+# cpath = r'D:\Zeeshan\modeling\results\Efficiency_ohe_10_hpo_20220519_152136\1_20220519_162029'
+# _model = FModel.from_config_file(os.path.join(cpath, "config.json"))
+#
+# _model.verbosity = 1
+# w_path = os.path.join(cpath, "weights", "weights_999_10.48209.hdf5")
+# _model.update_weights(w_path)
 
 
 # ** validation data **
@@ -136,7 +136,7 @@ _model.update_weights(w_path)
 
 
 # ** training data **
-train_pred = _model.predict([train_x_dyn[0:92], train_x_static[0:92]], y=train_y[0:92],
+train_pred = model.predict([train_x_dyn[0:92], train_x_static[0:92]], y=train_y[0:92],
                   process_results=False)
 
 train_pred1 = train_pred.reshape(-1, 1)
@@ -156,7 +156,7 @@ train_data = train_data.rename(columns=mapper)
 anion_columns = [col for col in train_data.columns if 'Anions_' in col]
 mapper = {k:v for k,v in zip(anion_columns, prepare_data.anion_encoder.categories_[0])}
 train_data = train_data.rename(columns=mapper)
-train_data.to_csv(os.path.join(_model.path, "train_data.csv"))
+train_data.to_csv(os.path.join(model.path, "train_data.csv"))
 
 
 

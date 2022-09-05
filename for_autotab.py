@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 from autotab import OptimizePipeline
 
-from utils import MyModel, prepare_mg_dye_data
+from utils import MyModel, PrepareData
 
 
 inputs = ['Catalyst_type', 'Catalyst_loading',
@@ -17,12 +17,15 @@ inputs = ['Catalyst_type', 'Catalyst_loading',
           'Surface area', 'Pore Volume'
           ]
 
-x,y = prepare_mg_dye_data(inputs, target="k")
+target = "Efficiency"
+
+prepare_data = PrepareData()
+x,y = prepare_data(inputs, target=target, transformation="ohe")
 
 train_x, val_x, train_y, val_y = train_test_split(x, y, test_size=0.3, random_state=313)
 
-class MyPipeline(OptimizePipeline):
 
+class MyPipeline(OptimizePipeline):
 
     def _build_model(
             self,

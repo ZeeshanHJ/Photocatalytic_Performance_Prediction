@@ -2,9 +2,6 @@
 
 import os
 
-import site
-site.addsitedir("D:\\AI4Water")
-
 import numpy as np
 import pandas as pd
 

@@ -5,11 +5,9 @@ site.addsitedir("D:\\AI4Water")
 import json
 import os
 import math
-from typing import Union
 
 import numpy as np
 import pandas as pd
-from skopt.plots import plot_objective
 from SeqMetrics import RegressionMetrics
 from ai4water import Model
 from ai4water.models import MLP, LSTM
@@ -98,6 +96,7 @@ def objective_fn(
         patience=800,
         batch_size=batch_size,
         ts_args={"lookback": lookback},
+        x_transformation="minmax",
         lr=lr,
                     #y_transformation={"robust"},
                   )
