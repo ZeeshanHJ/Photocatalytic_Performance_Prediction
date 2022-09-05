@@ -9,6 +9,8 @@ file named "pdp" discription: partial denpendence analysis (PDP) was used to inv
 Deep learning models: in this study, two deep learning models named ANN and LightLSTM were used. the codes, weights and other relevent files were available in their respective .py files. 
 process parameters optimizations were investigated using heatmap technique. the required code and related materials are available in the heatmap.py file.
 various post processing tools such as permutation importance, PDP, resgression plots were also studied. the files named for permutation importance, PDP and resgression plots are perm_imp.py, pdp.py and reg_plots.py, respectively. All the required details including environments, weights are included in the codes files. 
+Two categorical input features, the catalyst type and anions, were converted to numerical values using the one-hot encoding method. 
+Each of the numerical input features was rescaled between 0 to 1 before feeding it to neural network. This step was carried out so that the variables which are measured at different scales contribute equally to model training.
 Besides, the feature importance and contribution factors to any certain data point can also be checked using SHAP analysis. the code is avaiable in the file named "with_SHAP.py"
 
 # Findings
