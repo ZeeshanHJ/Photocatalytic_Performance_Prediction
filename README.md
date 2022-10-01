@@ -16,5 +16,5 @@ Besides, the feature importance and contribution factors to any certain data poi
 
 # Findings
 The ten input variables selected were the catalyst type, reaction time, light intensity, initial concentration, catalyst loading, solution pH, humic acid concentration, anions, surface area, and pore volume of various photocatalysts. The MG dye degradation efficiency was selected as the output variable. An evaluation of the performance metrics suggested that the CatBoost model, with the highest test coefficient of determination (0.99) and lowest mean absolute error (0.64) and root-mean-square error (1.34), outperformed all other models. The CatBoost model showed that the photocatalytic reaction conditions were more important than the material properties. The modelling results suggested that the optimized process conditions were a light intensity of 105 W, catalyst loading of 1.5 g/L, initial MG dye concentration of 5 mg/L and solution pH of 7. 
-# Corresponding
+# Correspondance 
 If you feel any dificulties in executing these codes, please contact us through email on jaffarizh@hotmail.com or ather_abbas786@yahoo.com. Thank you
