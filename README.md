@@ -1,5 +1,5 @@
 # Paper title and data availability
-This repository contains codes for the paper entitaled "Machine learning approaches to predict the photocatalytic performance of bismuth ferrite-based materials in the removal of malachite green" authored by Zeeshan Haider Jaffari, Ather Abbas, Sze-Mun Lam, Sanghun Park, Kangmin Chon, Sun-Sik Kim and Kyung Hwa Cho, also known as the WEIL group at UNIST, Korea.
+This repository contains codes for the paper entitled "Machine learning approaches to predict the photocatalytic performance of bismuth ferrite-based materials in the removal of malachite green" authored by Zeeshan Haider Jaffari, Ather Abbas, Sze-Mun Lam, Sanghun Park, Kangmin Chon, Sun-Sik Kim and Kyung Hwa Cho, also known as the WEIL group at UNIST, Korea.
 File name "Raw data" contains the data set of 1200 data points used in this study to build this model. Besides, The published article can be found on https://www.sciencedirect.com/science/article/pii/S0304389422018258
 
 # Introduction
